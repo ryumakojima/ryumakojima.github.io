@@ -7,6 +7,8 @@ import PhotoWall from '../components/PhotoWall.astro';
 import Stats from '../components/Stats.astro';
 import PastEvents from '../components/PastEvents.astro';
 import Partners from '../components/Partners.astro';
+import Updates from '../components/Updates.astro';
+import { updates } from '../data/updates';
 import { getSignupUrl } from '../config';
 
 import savannaGrassland from '../assets/photos/savanna-grassland.jpg';
@@ -155,6 +157,17 @@ const faqLd = {
       </div>
     </div>
   </section>
+
+  {updates.length > 0 && (
+    <section class="section section-white reveal">
+      <div class="wrap">
+        <SectionLabel eyebrow="Updates" heading="What we've been up to." center />
+        <div style="margin-top:2.2rem;">
+          <Updates />
+        </div>
+      </div>
+    </section>
+  )}
 
   {/* Past events — hidden until we have real events to show
   <section class="section section-white reveal">

@@ -1,0 +1,54 @@
+// ─────────────────────────────────────────────────────────────
+// Activity feed ("Updates / 活動報告") — mirrors LinkedIn posts as cards.
+//
+// TO ADD A POST (≈2 min):
+//   1. Drop the photo into  src/assets/updates/   (any .jpg/.png/.webp).
+//   2. Add ONE entry to the top of the `updates` array below
+//      (newest first). Fill EN + JA text, the date, the image
+//      FILENAME, and paste the LinkedIn post URL.
+// That's it — commit & push, the site rebuilds and shows it.
+// ─────────────────────────────────────────────────────────────
+import type { ImageMetadata } from 'astro';
+
+// Auto-loads every image in src/assets/updates/ so entries below only
+// need to reference a filename string (no per-image import line).
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  '../assets/updates/*.{jpg,jpeg,png,webp,avif,JPG,JPEG,PNG}',
+  { eager: true }
+);
+
+export function resolveUpdateImage(file: string): ImageMetadata {
+  const hit = images[`../assets/updates/${file}`];
+  if (!hit) {
+    throw new Error(
+      `[updates] image not found: src/assets/updates/${file} — check the filename in src/data/updates.ts`
+    );
+  }
+  return hit.default;
+}
+
+export interface Update {
+  date: string; // shown on the card, format 'YYYY.MM.DD'
+  image: string; // filename inside src/assets/updates/
+  url?: string; // link to the LinkedIn post (optional; '' hides the link)
+  alt?: string; // image alt text (falls back to the title)
+  en: { title: string; body: string };
+  ja: { title: string; body: string };
+}
+
+// Newest first.
+export const updates: Update[] = [
+  {
+    date: '2026.06.21',
+    image: '2026-06-soccer.jpg', // ← PLACEHOLDER photo; replace the file with the real one (same name)
+    url: '', // ← paste the LinkedIn post URL here
+    en: {
+      title: 'Soccer with the African-Arab community',
+      body: 'We got invited by the Japanese African-Arab community to play soccer together — a great afternoon on the pitch.',
+    },
+    ja: {
+      title: 'アフリカ・アラブ コミュニティとサッカー',
+      body: '在日アフリカ・アラブ コミュニティに誘っていただき、一緒にサッカーをしました。最高の午後でした。',
+    },
+  },
+];
