@@ -68,7 +68,7 @@ const signupExternal = signup.startsWith('http');
         class="nav-cta"
         {...(signupExternal ? { target: '_blank', rel: 'noopener' } : {})}
       >{t.cta}</a>
-      <a href={otherLocaleHref} class="lang-link" aria-label="Switch language">
+      <a href={otherLocaleHref} class="lang-link" aria-label="Switch language" data-set-lang={otherLocale}>
         {t.langSwitchLabel}
       </a>
     </nav>

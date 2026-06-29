@@ -99,6 +99,47 @@ const graphLd = {
     <script is:inline>
       document.documentElement.classList.add('js');
     </script>
+    {/* Auto language redirect: ja browser -> /ja, anything else -> EN.
+        Runs before paint. Respects a saved manual choice; never redirects an
+        EN-only page (no JA mirror). */}
+    <script is:inline define:vars={{ pageEnOnly: enOnly }}>
+      (function () {
+        try {
+          var KEY = 'jayp-lang';
+          var path = location.pathname.replace(/\/+$/, '') || '/';
+          var isJa = path === '/ja' || path.indexOf('/ja/') === 0;
+          var current = isJa ? 'ja' : 'en';
+          var slug = isJa ? (path === '/ja' ? '/' : path.slice(3)) : path;
+
+          var stored = null;
+          try { stored = localStorage.getItem(KEY); } catch (e) {}
+
+          var target = stored;
+          if (target !== 'en' && target !== 'ja') {
+            var langs =
+              navigator.languages && navigator.languages.length
+                ? navigator.languages
+                : [navigator.language || 'en'];
+            target = String(langs[0] || 'en').toLowerCase().indexOf('ja') === 0 ? 'ja' : 'en';
+            try { localStorage.setItem(KEY, target); } catch (e) {}
+          }
+
+          if (target === current) return;
+
+          var dest;
+          if (target === 'ja') {
+            if (pageEnOnly) return; // this page has no JA mirror
+            dest = slug === '/' ? '/ja' : '/ja' + slug;
+          } else {
+            dest = slug; // every JA page has an EN mirror
+          }
+
+          if (dest && dest !== path) {
+            location.replace(dest + location.search + location.hash);
+          }
+        } catch (e) {}
+      })();
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
 
@@ -150,6 +191,20 @@ const graphLd = {
     <Footer />
 
     <script is:inline>
+      // Remember an explicit language switch so the auto-redirect stops fighting it.
+      document.addEventListener(
+        'click',
+        (e) => {
+          const a = e.target.closest && e.target.closest('[data-set-lang]');
+          if (a) {
+            try {
+              localStorage.setItem('jayp-lang', a.getAttribute('data-set-lang'));
+            } catch (_) {}
+          }
+        },
+        true
+      );
+
       const revealEls = document.querySelectorAll('.reveal');
       if ('IntersectionObserver' in window && revealEls.length) {
         const io = new IntersectionObserver(
