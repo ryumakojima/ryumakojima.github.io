@@ -1,0 +1,60 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/Hero.astro';
+import SectionLabel from '../../components/SectionLabel.astro';
+import { getSignupUrl } from '../../config';
+
+import cafeViewArusha from '../../assets/photos/cafe-view-arusha.jpg';
+
+const signup = getSignupUrl('ja');
+---
+
+<BaseLayout
+  title="日本とアフリカの交流イベント｜Connection Party 2026"
+  description="日本とアフリカをつなぐ交流イベント Japan-Africa Young Professionals Connection Party を2026年11月ごろ開催予定。日程・場所は未定です。"
+  keywords={[
+    '日本 アフリカ イベント',
+    '日本 アフリカ 交流会',
+    '在日アフリカ イベント',
+    'Japan-Africa Young Professionals Connection Party',
+  ]}
+>
+  <Hero
+    image={cafeViewArusha}
+    alt="街を見渡す眺め"
+    eyebrow="Events"
+    headline="Connection Party"
+    height="short"
+  />
+
+  <section class="section section-white reveal">
+    <div class="wrap text-center event">
+      <SectionLabel eyebrow="Coming Up · 2026年11月ごろ" center />
+      <h2>Japan-Africa Young Professionals Connection Party</h2>
+      <p class="lead measure-center">
+        つながりを深める気軽な交流イベントです。留学生、社会人、アフリカに興味のある方、どなたでも参加可能です。
+      </p>
+      <p class="urgent">定員制・先着順です。詳細はメールリストでお知らせします。</p>
+      <div class="actions center">
+        <a href="/ja/connection-party" class="btn btn-solid">詳細を見る</a>
+      </div>
+      {/* <p class="note">日程・会場は未定です。詳細はメールリストで先にお知らせします。</p> */}
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .event h2 {
+    font-size: var(--text-3xl);
+  }
+  .urgent {
+    color: var(--accent);
+    font-weight: 600;
+    margin-top: 0.4rem;
+  }
+  .note {
+    margin-top: 2.4rem;
+    font-size: var(--text-sm);
+    color: var(--text-soft);
+  }
+</style>

@@ -1,0 +1,300 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/Hero.astro';
+import SectionLabel from '../../components/SectionLabel.astro';
+import MiniBars from '../../components/MiniBars.astro';
+import PhotoWall from '../../components/PhotoWall.astro';
+import Stats from '../../components/Stats.astro';
+import PastEvents from '../../components/PastEvents.astro';
+import Partners from '../../components/Partners.astro';
+import { getSignupUrl } from '../../config';
+
+import savannaGrassland from '../../assets/photos/savanna-grassland.jpg';
+import cafeViewArusha from '../../assets/photos/cafe-view-arusha.jpg';
+import foodArusha from '../../assets/photos/food-arusha.jpg';
+import teachingJapaneseClass from '../../assets/photos/teaching-japanese-class.jpg';
+
+const signup = getSignupUrl('ja');
+
+// ← コミュニティの成長に合わせて数字を更新
+const reachStats = [
+  { value: 7, suffix: '', label: 'Countries reached' },
+  { value: 20, suffix: '+', label: 'Members' },
+];
+
+const faqLd = {
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'Japan-Africa Young Professionalsとは何ですか？',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Japan-Africa Young Professionalsは、日本とアフリカの若い世代をつなぐ交流コミュニティです。',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: '誰が参加できますか？',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: '社会人、学生、在日アフリカの方、アフリカに関心のある方、ボランティア、パートナーなど、幅広く参加できます。',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'イベントは例えば何がありますか？',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: '2026年11月ごろには、とある国の大使館と協力して交流イベントを開催しようと調整中です。',
+      },
+    },
+  ],
+};
+---
+
+<BaseLayout
+  title="日本とアフリカの交流コミュニティ｜Japan-Africa Young Professionals"
+  description="日本とアフリカをつなぐバイリンガルな交流コミュニティ。社会人・学生・在日アフリカの方が、イベント、文化交流、スポーツで出会う場です。"
+  keywords={[
+    '日本 アフリカ 交流コミュニティ',
+    '日本 アフリカ イベント',
+    '在日アフリカ コミュニティ',
+    'アフリカ 文化交流 日本',
+    'Japan-Africa Young Professionals',
+  ]}
+  jsonLd={faqLd}
+>
+  <Hero
+    image={savannaGrassland}
+    alt="広いサバンナと空"
+    eyebrow="Japan-Africa Connection"
+    headline={`若者主体の\n日本とアフリカの架け橋`}
+    subhead="若い世代のアフリカと日本の交流を深めるための組織です。"
+    ctaLabel="コミュニティーの一員になる！"
+    ctaHref={signup}
+  />
+
+  <!-- Why -->
+  <section class="section section-white reveal">
+    <div class="wrap why">
+      <div class="why-text">
+        <SectionLabel eyebrow="Why JAYP" heading="若い世代のための交流場所の確保" />
+        <p>年々、留学やボランティアを通じてアフリカに関わる日本の若者は増加しており、同様にアフリカから日本に移住、留学する若者も増えています。</p>
+        <p>ただ、その両方の若者をつなぐ交流会や組織が不在で、継続的に出会える場が限られています。だから、私たちがつくります。</p>
+        <p>日本とアフリカの交流コミュニティ、アフリカ文化にふれるイベントを探している方の入り口を目指し活動しています。</p>
+      </div>
+      <div class="evidence-stack">
+        <MiniBars
+          title="African residents in Japan"
+          bars={[
+            { label: '2000', display: '3,840', pct: 15 },
+            { label: '2010', display: '8,917', pct: 35 },
+            { label: '2024', display: '25,283', pct: 100 },
+          ]}
+          source="出典：出入国在留管理庁「在留外国人統計」。"
+        />
+        <div class="flow-card reveal">
+          <p class="flow-kicker">Japan → Africa is growing too</p>
+          <p>
+            外務省の海外在留邦人数調査では、全体の在留邦人数が減る中でも、
+            アフリカは増加した地域のひとつとして示されています。
+          </p>
+          <p class="flow-source">
+            出典：外務省「海外在留邦人数調査統計」、nippon.com 2023年要約。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reach stats -->
+  <section class="section section-dark reveal" style="padding-block: clamp(2.5rem, 6vw, 4.2rem);">
+    <div class="wrap text-center">
+      <SectionLabel eyebrow="Current reach" center />
+      <div style="margin-top:1.6rem;">
+        <Stats items={reachStats} />
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section section-white reveal">
+    <div class="wrap faq">
+      <SectionLabel eyebrow="FAQ" heading="私たちについて" center />
+      <div class="faq-grid">
+        <article>
+          <h3>私たちについて</h3>
+          <p>日本とアフリカの若い世代をつなぐ、交流コミュニティーです。</p>
+        </article>
+        <article>
+          <h3>誰が対象ですか？</h3>
+          <p>社会人、学生、在日アフリカの方、アフリカに関心のある方なら歓迎です。</p>
+        </article>
+        <article>
+          <h3>イベントは例えば何がありますか？</h3>
+          <p>2026年11月ごろには、とある国の大使館と協力して交流イベントを開催しようと調整中です。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- First event -->
+  <section class="section section-sand reveal">
+    <div class="wrap text-center event-block">
+      <SectionLabel eyebrow="2026年11月ごろ" center />
+      <h2>Japan-Africa Young Professionals Connection Party</h2>
+      <p class="lead measure-center">
+        つながりを深める気軽な交流イベントです。留学生、社会人、アフリカに興味のある方、どなたでも参加可能です。定員制・先着順です。
+      </p>
+      <div class="actions center">
+        <a href="/ja/connection-party" class="btn btn-solid">詳細を見る</a>
+      </div>
+    </div>
+  </section>
+
+  {/* これまでの活動 — 実際の活動が出せるまで非表示
+  <section class="section section-white reveal">
+    <div class="wrap">
+      <SectionLabel eyebrow="Past Events" heading="これまでの活動" center />
+      <div style="margin-top:2.2rem;">
+        <PastEvents
+          items={[
+            { image: cafeViewArusha, name: 'Connection Party', date: '2026.04.19' },
+            { image: foodArusha, name: 'Culture Night', date: '2026.02.14' },
+            { image: teachingJapaneseClass, name: 'Language Meetup', date: '2025.12.07' },
+          ]}
+        />
+      </div>
+    </div>
+  </section>
+  */}
+
+  {/* パートナー団体 — 実際のパートナーが決まるまで非表示
+  <section class="section section-sand reveal">
+    <div class="wrap">
+      <SectionLabel eyebrow="Partners" heading="ともに作る仲間" center />
+      <div style="margin-top:2.2rem;">
+        <Partners
+          items={[
+            { logo: '/logo-placeholder.svg', name: 'Partner One' },
+            { logo: '/logo-placeholder.svg', name: 'Partner Two' },
+            { logo: '/logo-placeholder.svg', name: 'Partner Three' },
+            { logo: '/logo-placeholder.svg', name: 'Partner Four' },
+          ]}
+        />
+      </div>
+    </div>
+  </section>
+  */}
+
+  {/* Community wall — temporarily hidden
+  <section class="section section-white reveal">
+    <div class="wrap">
+      <SectionLabel eyebrow="Community Wall" heading="Share your moment." center />
+      <PhotoWall
+        items={[
+          { nickname: 'あや', location: '東京' },
+          { nickname: 'クワメ', location: '大阪' },
+          { nickname: 'マリアム', location: '名古屋' },
+        ]}
+        note="イベントのあとは、だれでも写真を投稿できます。必要なのはニックネームと場所だけ。（いまは表示例です）"
+        postLabel="Post a photo"
+        postHref={signup}
+      />
+    </div>
+  </section>
+  */}
+
+  <!-- CTA -->
+  <section class="section section-dark text-center reveal">
+    <div class="wrap">
+      <h2>活動に参加する！</h2>
+      <div class="actions center">
+        <a href={signup} class="btn btn-solid" target="_blank" rel="noopener">参加フォームへ</a>
+        <a href="/ja/get-involved" class="btn btn-light">活動・イベント詳細</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .why {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: center;
+  }
+  .why-text p {
+    color: var(--text-soft);
+  }
+  .evidence-stack {
+    display: grid;
+    gap: 1rem;
+  }
+  .flow-card {
+    background: var(--dark);
+    color: var(--text-on-dark);
+    border-radius: 12px;
+    padding: 1.25rem 1.35rem;
+  }
+  .flow-card p {
+    margin: 0;
+  }
+  .flow-card p + p {
+    margin-top: 0.7rem;
+  }
+  .flow-kicker {
+    font-family: var(--font-label);
+    font-size: var(--text-xs);
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+  .flow-source {
+    font-size: 0.72rem;
+    line-height: 1.5;
+    color: var(--text-on-dark-soft);
+  }
+  .faq-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  .faq-grid article {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.35rem;
+    background: var(--paper);
+  }
+  .faq-grid h3 {
+    font-size: var(--text-lg);
+    margin-bottom: 0.45rem;
+  }
+  .faq-grid p {
+    color: var(--text-soft);
+    font-size: var(--text-sm);
+    margin: 0;
+  }
+  .reach {
+    margin-top: 1.4rem;
+    color: var(--text) !important;
+    font-weight: 500;
+  }
+  .reach strong {
+    color: var(--gold-dark);
+  }
+  .event-block h2 {
+    font-size: var(--text-3xl);
+  }
+  @media (max-width: 860px) {
+    .why {
+      grid-template-columns: 1fr;
+    }
+    .faq-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
