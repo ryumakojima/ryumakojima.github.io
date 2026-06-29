@@ -40,8 +40,8 @@ export interface Update {
 export const updates: Update[] = [
   {
     date: '2026.06.21',
-    image: '2026-06-soccer.jpg', // ← PLACEHOLDER photo; replace the file with the real one (same name)
-    url: '', // ← paste the LinkedIn post URL here
+    image: '2026-06-soccer.jpg',
+    url: '', // ← optional: paste the LinkedIn post URL to show a "View on LinkedIn" link
     en: {
       title: 'Soccer with the African-Arab community',
       body: 'We got invited by the Japanese African-Arab community to play soccer together — a great afternoon on the pitch.',
