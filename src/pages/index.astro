@@ -9,7 +9,7 @@ import PastEvents from '../components/PastEvents.astro';
 import Partners from '../components/Partners.astro';
 import Updates from '../components/Updates.astro';
 import { updates } from '../data/updates';
-import { getSignupUrl } from '../config';
+import { getSignupUrl, siteConfig } from '../config';
 
 import savannaGrassland from '../assets/photos/savanna-grassland.jpg';
 import cafeViewArusha from '../assets/photos/cafe-view-arusha.jpg';
@@ -85,6 +85,11 @@ const faqLd = {
         <p>Every year, more young people from Japan connect with Africa through study, volunteering, work, and travel. At the same time, more young Africans are coming to Japan to study, work, and build new lives.</p>
         <p>But there are still few events or organizations that consistently bring young generations from both sides together. So we are building one.</p>
         <p>JAYP is a starting point for anyone looking for a Japan-Africa exchange community or events where they can experience African culture in Japan.</p>
+        <div class="actions">
+          <a href={siteConfig.onePageBriefUrl} class="btn" download="JAYP-One-Page-Brief-v1.4.pdf">
+            Download the one-page brief (PDF)
+          </a>
+        </div>
       </div>
       <div class="evidence-stack">
         <MiniBars

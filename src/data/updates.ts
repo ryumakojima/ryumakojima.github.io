@@ -39,6 +39,20 @@ export interface Update {
 // Newest first.
 export const updates: Update[] = [
   {
+    date: '2026.07.11',
+    image: '2026-07-tanzania-embassy.jpg',
+    url: '',
+    alt: 'Exterior of Tanzania House at the Embassy of Tanzania in Japan',
+    en: {
+      title: 'A visit to the Embassy of Tanzania',
+      body: 'We visited the Embassy of Tanzania in Japan and had a good conversation.',
+    },
+    ja: {
+      title: '駐日タンザニア大使館を訪問',
+      body: '駐日タンザニア大使館を訪問し、お話しする機会をいただきました。',
+    },
+  },
+  {
     date: '2026.06.21',
     image: '2026-06-soccer.jpg',
     url: '', // ← optional: paste the LinkedIn post URL to show a "View on LinkedIn" link

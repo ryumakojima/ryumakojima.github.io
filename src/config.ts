@@ -7,6 +7,7 @@ export const siteConfig = {
   name: 'Japan-Africa Young Professionals',
   nameJa: '日本アフリカ・ヤングプロフェッショナルズ',
   shortName: 'JAYP',
+  onePageBriefUrl: '/downloads/JAYP-One-Page-Brief-v1.4.pdf',
   aliases: [
     'Japan Africa Young Professionals',
     'Japan-Africa Youth Community',

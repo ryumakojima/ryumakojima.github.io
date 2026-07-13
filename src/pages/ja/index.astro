@@ -9,7 +9,7 @@ import PastEvents from '../../components/PastEvents.astro';
 import Partners from '../../components/Partners.astro';
 import Updates from '../../components/Updates.astro';
 import { updates } from '../../data/updates';
-import { getSignupUrl } from '../../config';
+import { getSignupUrl, siteConfig } from '../../config';
 
 import savannaGrassland from '../../assets/photos/savanna-grassland.jpg';
 import cafeViewArusha from '../../assets/photos/cafe-view-arusha.jpg';
@@ -85,6 +85,11 @@ const faqLd = {
         <p>年々、留学やボランティアを通じてアフリカに関わる日本の若者は増加しており、同様にアフリカから日本に移住、留学する若者も増えています。</p>
         <p>ただ、その両方の若者をつなぐ交流会や組織が不在で、継続的に出会える場が限られています。だから、私たちがつくります。</p>
         <p>日本とアフリカの交流コミュニティ、アフリカ文化にふれるイベントを探している方の入り口を目指し活動しています。</p>
+        <div class="actions">
+          <a href={siteConfig.onePageBriefUrl} class="btn" download="JAYP-One-Page-Brief-v1.4.pdf">
+            1ページ概要をダウンロード（PDF）
+          </a>
+        </div>
       </div>
       <div class="evidence-stack">
         <MiniBars
